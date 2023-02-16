@@ -1,4 +1,4 @@
-package com.walletconnect.codingchallenge.ui
+package com.walletconnect.codingchallenge.ui.clothinglist
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
