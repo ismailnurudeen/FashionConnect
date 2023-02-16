@@ -14,6 +14,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -30,7 +34,7 @@ import com.walletconnect.codingchallenge.util.assetManager
 class ClothingActivity : ComponentActivity() {
     private val viewModel: ClothingViewModel by viewModels()
 
-    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,6 +45,9 @@ class ClothingActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     val uiState by viewModel.clothingListState.collectAsState()
+                    val refreshState = rememberPullRefreshState(uiState.isRefreshing, {
+                        viewModel.loadClothes(refreshing = true)
+                    })
 
                     Scaffold {
                         Column(modifier = Modifier.padding(it)) {
@@ -52,19 +59,22 @@ class ClothingActivity : ComponentActivity() {
                                     CircularProgressIndicator()
                                 }
                             } else {
-                                LazyVerticalGrid(
-                                    columns = GridCells.Fixed(2),
-                                    contentPadding = PaddingValues(16.dp),
-                                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                                ) {
-                                    items(items = uiState.items, key = { item ->
-                                        item.id
-                                    }) { item ->
-                                        ClothingListItem(item = item) {
-                                            // Navigate to details screen
+                                Box(modifier = Modifier.pullRefresh(refreshState)) {
+                                    LazyVerticalGrid(
+                                        columns = GridCells.Fixed(2),
+                                        contentPadding = PaddingValues(16.dp),
+                                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                                    ) {
+                                        items(items = uiState.items, key = { item ->
+                                            item.id
+                                        }) { item ->
+                                            ClothingListItem(item = item) {
+                                                // Navigate to details screen
+                                            }
                                         }
                                     }
+                                    PullRefreshIndicator(refreshing = uiState.isRefreshing, state = refreshState, Modifier.align(Alignment.TopCenter))
                                 }
                             }
                         }
