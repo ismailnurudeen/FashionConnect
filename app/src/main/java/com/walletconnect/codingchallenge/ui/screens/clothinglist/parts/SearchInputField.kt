@@ -8,6 +8,7 @@ import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -30,7 +31,7 @@ fun SearchInputField(
         value = value,
         onValueChange = onValueChange,
         placeholder = {
-            Text(text = hint)
+            Text(text = hint, style = MaterialTheme.typography.bodyMedium)
         },
         shape = RoundedCornerShape(percent = 50),
         colors = TextFieldDefaults.textFieldColors(

@@ -122,6 +122,6 @@ private fun NoItems(modifier: Modifier = Modifier) {
             tint = MaterialTheme.colorScheme.onBackground
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Text("No Items Found", color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp)
+        Text("No Items Found", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.bodyMedium)
     }
 }

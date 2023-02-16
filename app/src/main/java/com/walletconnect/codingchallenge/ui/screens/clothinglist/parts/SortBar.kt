@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -28,9 +29,9 @@ fun SortBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = horizontalArrangement
     ) {
-        Text(text = "sort by:")
+        Text(text = "sort by: ", style = MaterialTheme.typography.labelMedium)
         TextButton(onClick = onClick) {
-            Text(text = currentSortFilter)
+            Text(text = currentSortFilter, style = MaterialTheme.typography.labelSmall)
             Spacer(modifier = Modifier.width(4.dp))
             Icon(modifier = Modifier.size(16.dp), imageVector = Icons.Rounded.KeyboardArrowDown, contentDescription = "sort")
         }

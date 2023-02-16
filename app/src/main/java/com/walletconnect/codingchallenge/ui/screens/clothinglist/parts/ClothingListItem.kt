@@ -17,7 +17,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.walletconnect.codingchallenge.data.model.ClothingItem
 
@@ -47,11 +46,11 @@ fun ClothingListItem(
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = item.title,
-                    fontSize = 14.sp,
                     maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.labelMedium
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     modifier = Modifier.background(
                         color = MaterialTheme.colorScheme.primaryContainer,
@@ -59,9 +58,8 @@ fun ClothingListItem(
                     )
                         .padding(8.dp),
                     text = "$${item.price}",
-                    fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                     maxLines = 1
                 )
             }
