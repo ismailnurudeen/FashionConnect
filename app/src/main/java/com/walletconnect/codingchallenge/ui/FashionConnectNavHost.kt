@@ -15,23 +15,24 @@ import com.walletconnect.codingchallenge.ui.screens.clothinglist.ClothingListScr
 fun FashionConnectNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Destinations.Home.name
+    startDestination: String = Destinations.Home.route
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
         startDestination = startDestination
     ) {
-        composable(Destinations.Home.name) {
+        composable(Destinations.Home.route) {
             ClothingListScreen(navigateToDetails = {
-                navController.navigate("details/${it.id}")
+                navController.navigate("${Destinations.Details.route}/${it.id}")
             })
         }
         composable(
-            "${Destinations.Details.name}/{clothingId}",
+            "${Destinations.Details.route}/{clothingId}",
             arguments = listOf(
                 navArgument("clothingId") {
                     this.type = NavType.IntType
+                    defaultValue = -1
                 }
             )
         ) {
@@ -43,7 +44,7 @@ fun FashionConnectNavHost(
     }
 }
 
-enum class Destinations(name: String) {
+enum class Destinations(val route: String) {
     Home("home"),
     Details("details")
 }
