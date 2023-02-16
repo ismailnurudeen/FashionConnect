@@ -1,4 +1,4 @@
-package com.walletconnect.codingchallenge.ui.clothinglist.parts
+package com.walletconnect.codingchallenge.ui.screens.clothinglist.parts
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth

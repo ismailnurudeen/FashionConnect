@@ -1,4 +1,4 @@
-package com.walletconnect.codingchallenge.ui.clothinglist
+package com.walletconnect.codingchallenge.ui.screens.clothinglist
 
 import com.walletconnect.codingchallenge.data.model.ClothingItem
 

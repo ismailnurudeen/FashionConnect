@@ -1,4 +1,4 @@
-package com.walletconnect.codingchallenge.ui.clothinglist.parts
+package com.walletconnect.codingchallenge.ui.screens.clothinglist.parts
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -28,7 +28,7 @@ fun AppBar(title: String, modifier: Modifier = Modifier, searchBar: @Composable 
         Column {
             Text(
                 text = title,
-                fontSize = 18.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Black,
                 color = MaterialTheme.colorScheme.onPrimary
             )
