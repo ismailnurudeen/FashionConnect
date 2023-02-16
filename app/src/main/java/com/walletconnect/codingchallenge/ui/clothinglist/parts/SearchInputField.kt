@@ -1,8 +1,10 @@
 package com.walletconnect.codingchallenge.ui.clothinglist.parts
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -19,6 +21,7 @@ fun SearchInputField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    onClearSearch: () -> Unit = {},
     hint: String = "Search"
 ) {
     TextField(
@@ -41,6 +44,15 @@ fun SearchInputField(
                 imageVector = Icons.Rounded.Search,
                 contentDescription = "Search"
             )
+        },
+        trailingIcon = {
+            if (value.isNotEmpty()) {
+                Icon(
+                    modifier = Modifier.clickable { onClearSearch() },
+                    imageVector = Icons.Rounded.Clear,
+                    contentDescription = "Clear Search"
+                )
+            }
         }
     )
 }
