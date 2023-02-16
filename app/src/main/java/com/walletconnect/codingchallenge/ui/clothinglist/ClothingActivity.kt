@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.walletconnect.codingchallenge.ui.clothinglist.parts.AppBar
 import com.walletconnect.codingchallenge.ui.clothinglist.parts.SearchInputField
+import com.walletconnect.codingchallenge.ui.clothinglist.parts.SortBar
 import com.walletconnect.codingchallenge.ui.theme.CodingChallengeTheme
 import com.walletconnect.codingchallenge.util.assetManager
 
@@ -74,6 +75,7 @@ class ClothingActivity : ComponentActivity() {
                                     CircularProgressIndicator()
                                 }
                             } else {
+                                SortBar(modifier = Modifier.padding(end = 16.dp), currentSortFilter = "title")
                                 Box(modifier = Modifier.pullRefresh(refreshState)) {
                                     LazyVerticalGrid(
                                         columns = GridCells.Fixed(2),
