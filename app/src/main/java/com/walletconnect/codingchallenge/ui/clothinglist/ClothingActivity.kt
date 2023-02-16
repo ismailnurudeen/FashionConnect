@@ -28,6 +28,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.walletconnect.codingchallenge.ui.clothinglist.parts.AppBar
+import com.walletconnect.codingchallenge.ui.clothinglist.parts.SearchInputField
 import com.walletconnect.codingchallenge.ui.theme.CodingChallengeTheme
 import com.walletconnect.codingchallenge.util.assetManager
 
@@ -49,7 +51,20 @@ class ClothingActivity : ComponentActivity() {
                         viewModel.loadClothes(refreshing = true)
                     })
 
-                    Scaffold {
+                    Scaffold(
+                        topBar = {
+                            AppBar(
+                                "Clothing Co.",
+                                searchBar = {
+                                    SearchInputField(
+                                        value = "",
+                                        onValueChange = {},
+                                        hint = "Search Items"
+                                    )
+                                }
+                            )
+                        }
+                    ) {
                         Column(modifier = Modifier.padding(it)) {
                             if (uiState.isLoading) {
                                 Box(
