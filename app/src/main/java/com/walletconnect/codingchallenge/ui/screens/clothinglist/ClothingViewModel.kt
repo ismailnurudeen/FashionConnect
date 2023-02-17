@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 class ClothingViewModel(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
-    // This will make the repository untestable, would be best if injected via constructor
+    // This will make the viewModel untestable, would be best if injected via constructor
     private val clothingRepository by lazy { ClothingRepository(assetManager, moshi) }
 
     private val _clothingListState = MutableStateFlow(ClothingListState())
@@ -46,6 +46,7 @@ class ClothingViewModel(private val dispatcher: CoroutineDispatcher = Dispatcher
                 )
             }
             delay(1500) // Just to simulate loading
+
             val clothingItems = clothingRepository.fetchAllClothingItems()
                 .sortWith(clothingListState.value.sortFilter)
 

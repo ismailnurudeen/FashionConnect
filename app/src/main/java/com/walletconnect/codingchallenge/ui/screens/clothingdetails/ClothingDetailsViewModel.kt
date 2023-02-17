@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class ClothingDetailsViewModel(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
-    // This will make the repository untestable, would be best if injected via constructor
+    // This will make the viewModel untestable, would be best if injected via constructor
     private val clothingRepository by lazy { ClothingRepository(assetManager, moshi) }
     private val _clothingDetailsUiState = MutableStateFlow(ClothingDetailsUiState())
     val clothingDetailsUiState: StateFlow<ClothingDetailsUiState> = _clothingDetailsUiState
