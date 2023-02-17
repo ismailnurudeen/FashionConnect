@@ -31,12 +31,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.walletconnect.codingchallenge.data.model.ClothingItem
 import com.walletconnect.codingchallenge.ui.screens.clothinglist.parts.AppBar
 import com.walletconnect.codingchallenge.ui.screens.clothinglist.parts.SearchInputField
 import com.walletconnect.codingchallenge.ui.screens.clothinglist.parts.SortBar
+import com.walletconnect.codingchallenge.ui.screens.clothinglist.parts.SortItem
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -76,8 +76,12 @@ fun ClothingListScreen(navigateToDetails: (ClothingItem) -> Unit = {}, viewModel
                 }
             } else {
                 SortBar(
-                    modifier = Modifier.padding(end = 16.dp),
-                    currentSortFilter = "title"
+                    modifier = Modifier.padding(end = 16.dp).align(Alignment.End),
+                    sortFilters = listOf(SortItem.Title, SortItem.Price),
+                    currentSortFilter = uiState.sortFilter,
+                    onSortSelected = { sort ->
+                        viewModel.setSortFilter(sort)
+                    }
                 )
                 if (uiState.filteredItems.isNotEmpty()) {
                     Box(modifier = Modifier.pullRefresh(refreshState)) {
