@@ -1,16 +1,3 @@
-# Android Take Home Test
-
-The purpose of this test is to evaluate your technical skills, communication and mindset.
-
-You should exemplify the best work you can do with the provided example and perhaps surprise us with your solution. You have *one* week time to work on the test, but our expectations are that a fraction of the time is needed for the test.
-
-## Submission Procedure
-After completing the challenge, push your changes to a remote repo that we can clone from and email the repo to us 
-
-Notes :
-   - Meaningful commit history (git) will be a plus.
-   - Feel free to add some comments or provide information in `README.md` file about things you would like to improve but didn't have time for this.
-
 ## Project
 * You are expected to add a UI layer to the project using Compose.
 * You will display a list that will show all of the `ClothingItems` from the `ClothingRepository` class.
@@ -24,7 +11,13 @@ Feel free to make any changes that will help you build the UI layer in Compose <
 You are free to suggest and implement any library or code snippet that you think that is going to be useful
 for the codebase. But please be sure to add detailed information about your suggestions and why they would be useful.
 
+_______________________________________
+## Things I would have loved to do to improve my solution;
 
-## Questions
-Feel free to reach out to us if you have any issues or questions. You may contact the person that sent the 
-code challenge to you.
+* Add UI test to test for the following cases:
+   1. Launching the ClothingListScreen
+   2. Testing the search functionality by inputting a search query and verifying that the search method on the view model is called with the correct query.
+   3. Testing the sort functionality by clicking on the sort button and selecting a sort filter, then verifying that the setSortFilter method on the view model is called with the correct filter.
+   4. Testing navigation by clicking on a clothing item and verifying that the details screen is displayed with correct data.
+
+* Add more animations
